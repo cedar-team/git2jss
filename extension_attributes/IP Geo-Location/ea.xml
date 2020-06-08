@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<computer_extension_attribute>
+   <name>IP Geo-Location</name>
+   <enabled>true</enabled>
+   <description>This attribute lists an approximate location of the machine based on it's current external IP address.  This attribute applies to both Mac and Windows.</description>
+   <data_type>String</data_type>
+   <input_type>
+      <type>script</type>
+      <platform>Mac</platform>
+      <script/>
+   </input_type>
+   <input_type>
+      <type>script</type>
+      <platform>Windows</platform>
+      <scripting_language>VBScript</scripting_language>
+      <script>On Error Resume Next
+        url=&quot;http://checkip.dyndns.org&quot;
+        Set objHTTP = CreateObject(&quot;MSXML2.XMLHTTP&quot;)
+        Set xmldoc = WScript.CreateObject(&quot;msxml2.domdocument&quot;)
+        
+        Call objHTTP.Open(&quot;GET&quot;, url, FALSE)
+        objHTTP.Send
+        arrIP = Split(objHTTP.responseText, &quot;IP Address: &quot;)
+        strIP = Replace(arrIP(1), &quot;&lt;/body&gt;&lt;/html&gt;&quot;, &quot;&quot;)
+        url=&quot;http://freegeoip.net/xml/&quot; &amp; strIP &amp; &quot;&quot;
+        Call objHTTP.Open(&quot;GET&quot;, url, FALSE)
+        objHTTP.send
+        xmldoc.loadXML(objHTTP.responseText)
+        Set objNodeList = xmlDoc.getElementsByTagName(&quot;CountryCode&quot;)
+        For i = 0 To (objNodeList.length - 1)
+        strCC = strCC &amp; objNodeList.Item(i).text
+        Next
+        Set objNodeList = xmlDoc.getElementsByTagName(&quot;RegionName&quot;)
+        For i = 0 To (objNodeList.length - 1)
+        strR = strR &amp; objNodeList.Item(i).text
+        Next
+        Set objNodeList = xmlDoc.getElementsByTagName(&quot;City&quot;)
+        For i = 0 To (objNodeList.length - 1)
+        strCity = strCity &amp; objNodeList.Item(i).text
+        Next
+        WScript.Echo &quot;&lt;result&gt;&quot; &amp; strCity &amp; &quot;,&quot; &amp; strR &amp; &quot;,&quot; &amp; strCC &amp; &quot;&lt;/result&gt;&quot;
+    </script>
+   </input_type>
+   <inventory_display>User and Location</inventory_display>
+   <recon_display>Extension Attributes</recon_display>
+</computer_extension_attribute>

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<computer_extension_attribute>
+   <name>Chrome Extensions</name>
+   <enabled>true</enabled>
+   <description>Displays Name, Version and ID of installed Google Chrome Extensions for current or last user.
+
+By default, data is displayed as:
+
+Name: Extension Name
+Version: Extension Version
+ID: Extension ID.
+
+However, if further data analysis is needed, an alternate output is available:
+
+Name;Version;ID
+
+The default output looks much prettier in the JSS, but the alternative output may be more useful.  
+
+To use the alternate output, simply comment out line:
+
+echo -e &quot;Name: $reportedName \nVersion: $version \nID: $extID \n&quot;
+
+And uncomment line:
+
+echo -e &quot;$reportedName;$version;$extID&quot;</description>
+   <data_type>String</data_type>
+   <input_type>
+      <type>script</type>
+      <platform>Mac</platform>
+      <script/>
+   </input_type>
+   <inventory_display>General</inventory_display>
+   <recon_display>Extension Attributes</recon_display>
+</computer_extension_attribute>

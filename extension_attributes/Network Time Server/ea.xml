@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<computer_extension_attribute>
+   <name>Network Time Server</name>
+   <enabled>true</enabled>
+   <description>This attribute lists the network time server that is currently set.  This attribute applies to both Mac and Windows.</description>
+   <data_type>String</data_type>
+   <input_type>
+      <type>script</type>
+      <platform>Mac</platform>
+      <script/>
+   </input_type>
+   <input_type>
+      <type>script</type>
+      <platform>Windows</platform>
+      <scripting_language>VBScript</scripting_language>
+      <script>On Error Resume Next
+Const HKEY_LOCAL_MACHINE = &amp;H80000002
+
+strComputer = &quot;.&quot;
+ 
+Set oReg=GetObject(&quot;winmgmts:{impersonationLevel=impersonate}!\\&quot; &amp; strComputer &amp; &quot;\root\default:StdRegProv&quot;)
+ 
+strKeyPath = &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers\&quot;
+strValueName = &quot;&quot;
+oReg.GetStringValue HKEY_LOCAL_MACHINE,strKeyPath,strValueName,strValue
+oReg.GetStringValue HKEY_LOCAL_MACHINE,strKeyPath,strValue,strValue2
+Wscript.Echo &quot;&lt;result&gt;&quot; &amp; strValue2 &amp; &quot;&lt;/result&gt;&quot;
+</script>
+   </input_type>
+   <inventory_display>General</inventory_display>
+   <recon_display>Extension Attributes</recon_display>
+</computer_extension_attribute>

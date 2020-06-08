@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<computer_extension_attribute>
+   <name>Search Domains</name>
+   <enabled>true</enabled>
+   <description>This attribute lists all search domains set on the active network connection.  This attribute applies to both Mac and Windows.</description>
+   <data_type>String</data_type>
+   <input_type>
+      <type>script</type>
+      <platform>Mac</platform>
+      <script/>
+   </input_type>
+   <input_type>
+      <type>script</type>
+      <platform>Windows</platform>
+      <scripting_language>VBScript</scripting_language>
+      <script>On Error Resume Next
+strComputer = &quot;.&quot; 
+Set objWMIService = GetObject(&quot;winmgmts:\\&quot; &amp; strComputer &amp; &quot;\root\CIMV2&quot;) 
+Set colItems = objWMIService.ExecQuery(&quot;SELECT * FROM Win32_NetworkAdapterConfiguration&quot;,,48) 
+For Each objItem in colItems
+If objitem.ipenabled = True then
+    strDNSDomain = objItem.DNSDomain
+    End If
+Next
+WScript.Echo &quot;&lt;result&gt;&quot; &amp; strDNSDomain &amp; &quot;&lt;/result&gt;&quot;
+</script>
+   </input_type>
+   <inventory_display>General</inventory_display>
+   <recon_display>Extension Attributes</recon_display>
+</computer_extension_attribute>

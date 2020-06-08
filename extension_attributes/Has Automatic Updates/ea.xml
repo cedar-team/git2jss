@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<computer_extension_attribute>
+   <name>Has Automatic Updates</name>
+   <enabled>true</enabled>
+   <description>Checks to see whether the computer has automatic updates set</description>
+   <data_type>String</data_type>
+   <input_type>
+      <type>script</type>
+      <platform>Mac</platform>
+      <script/>
+   </input_type>
+   <inventory_display>Operating System</inventory_display>
+   <recon_display>Extension Attributes</recon_display>
+</computer_extension_attribute>
