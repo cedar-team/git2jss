@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>32bit apps</displayName>
-<description>THis will display 32bit apps</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/bash&#13;
-&#13;
-apps=$(cat /var/log/32bit_apps_installed.log)&#13;
-echo "&lt;result&gt;$apps&lt;/result&gt;"</scriptContentsMac>
-</extensionAttribute>
