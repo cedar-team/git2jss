@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<script>
+   <name>CitrixReceiverPreInstall</name>
+   <category>No category assigned</category>
+   <info>Script comes from https://www.jamf.com/jamf-nation/discussions/26656/how-to-install-citrix-receiver-12-8-via-login-trigger-or-self-service-and-avoid-failed-status-in-policy-log</info>
+   <notes/>
+   <priority>Before</priority>
+   <parameters/>
+   <os_requirements/>
+   <script_contents/>
+</script>

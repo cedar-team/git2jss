@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<script>
+   <name>FirefoxInstall.sh</name>
+   <category>No category assigned</category>
+   <info>This script came from https://www.jamf.com/jamf-nation/third-party-products/files/764/firefox-install-update originally</info>
+   <notes/>
+   <priority>After</priority>
+   <parameters/>
+   <os_requirements/>
+   <script_contents/>
+</script>

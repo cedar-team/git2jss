@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<script>
+   <name>SetTimeServer.sh</name>
+   <category>No category assigned</category>
+   <info/>
+   <notes/>
+   <priority>Before</priority>
+   <parameters>
+      <parameter4>timeserveraddress</parameter4>
+   </parameters>
+   <os_requirements/>
+   <script_contents/>
+</script>
