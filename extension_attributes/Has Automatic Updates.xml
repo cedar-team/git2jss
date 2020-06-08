@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Has Automatic Updates</displayName>
+<description>Checks to see whether the computer has automatic updates set</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/bash&#13;
+#Script to verify the status of Auto Updates&#13;
+#to ensure Critical and Security updates are applied&#13;
+#By Quam Sodji Copyright 2015&#13;
+&#13;
+### Check for schedule, critical and config settings&#13;
+schedule_status=$(softwareupdate --schedule)&#13;
+critical_status=$(defaults read /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdateInstall 2&gt;/dev/null)&#13;
+config_status=$(defaults read /Library/Preferences/com.apple.SoftwareUpdate ConfigDataInstall 2&gt;/dev/null)&#13;
+run_config=$(softwareupdate --background-critical)&#13;
+&#13;
+### The expected settings for schedule, critical and config&#13;
+schedule_on="Automatic check is on"&#13;
+critical_on="1"&#13;
+config_on="1"&#13;
+&#13;
+&#13;
+if [ "$schedule_status" == "$schedule_on" ] &amp;&amp; [ "$critical_status" == "$critical_on" ] &amp;&amp; [ "$config_status" == "$config_on" ]; then&#13;
+&#13;
+    result="Enabled"&#13;
+else&#13;
+    result="Disabled"&#13;
+fi&#13;
+&#13;
+echo "&lt;result&gt;$result&lt;/result&gt;"</scriptContentsMac>
+</extensionAttribute>

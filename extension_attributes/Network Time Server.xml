@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Network Time Server</displayName>
+<description>This attribute lists the network time server that is currently set.  This attribute applies to both Mac and Windows.</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/sh&#13;
+echo "&lt;result&gt;`/usr/sbin/systemsetup -getnetworktimeserver | awk '{print $4}'`&lt;/result&gt;"&#13;
+	</scriptContentsMac>
+</extensionAttribute>

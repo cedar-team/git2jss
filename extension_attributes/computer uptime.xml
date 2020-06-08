@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>computer uptime</displayName>
+<description>Check for uptime</description>
+<dataType>string</dataType>
+<scriptContentsMac>!/bin/sh&#13;
+&#13;
+days=`uptime | awk '{ print $4 }' | sed 's/,//g'`&#13;
+num=`uptime | awk '{ print $3 }'`&#13;
+&#13;
+# now check how long they've been awake&#13;
+if [ $days = "days" ];&#13;
+&#13;
+    &lt;result&gt;$num&lt;/result&gt;&#13;
+fi</scriptContentsMac>
+</extensionAttribute>
